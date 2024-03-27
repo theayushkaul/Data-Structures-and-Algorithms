@@ -1,0 +1,172 @@
+### Bit Manipulation Cheat Sheet
+
+#### 1. Check if two integers have opposite signs
+```c++
+if (x ^ y < 0) {
+    // Opposite signs
+} else {
+    // Same signs
+}
+```
+
+#### 2. Add 1 to a given number
+```c++
+int result = -(~x);
+```
+
+#### 3. Multiply a number by 2
+```c++
+int result = x << 1;
+```
+
+#### 4. Divide a number by 2
+```c++
+int result = x >> 1;
+```
+
+#### 5. Turn off the rightmost set bit
+```c++
+int result = x & (x - 1);
+```
+
+#### 6. Check whether a given number is a power of 4 or not
+```c++
+bool isPowerOf4 = !(x & (x - 1)) && (__builtin_ctz(x) % 2 == 0);
+```
+
+#### 7. Compute modulus division by a power-of-2-number
+```c++
+int result = x & (powerOf2 - 1);
+```
+
+#### 8. Rotate bits of a number
+```c++
+int leftRotated = (x << shiftBy) | (x >> (32 - shiftBy));
+int rightRotated = (x >> shiftBy) | (x << (32 - shiftBy));
+```
+
+#### 9. Count number of bits to be flipped to convert A to B
+```c++
+int bitsToFlip = __builtin_popcount(a ^ b);
+```
+
+#### 10. Find whether a number is power of two
+```c++
+bool isPowerOfTwo = (n > 0) && !(n & (n - 1));
+```
+
+#### 11. Position of rightmost set bit
+```c++
+int position = ffs(x); // 1-indexed position
+int position = log2(x & -x) + 1; // 1-indexed position
+```
+
+#### 12. Calculate XOR from 1 to n
+```c++
+int computeXOR(int n) {
+    switch (n & 3) { // Equivalent to n % 4
+        case 0: return n;
+        case 1: return 1;
+        case 2: return n + 1;
+        case 3: return 0;
+    }
+}
+```
+
+#### 13. Binary representation of a given number
+```c++
+void binaryRepresentation(unsigned n) {
+    if (n > 1)
+        binaryRepresentation(n >> 1);
+    cout << (n & 1);
+}
+```
+
+#### 14. Find position of only set bit
+```c++
+int position = ffs(n); // 1-indexed position
+```
+
+#### 15. Turn off a particular bit in a number
+```c++
+int result = x & ~(1 << (pos - 1));
+```
+
+#### 16. Check if 2 numbers are equal
+```c++
+bool areEqual = !(x ^ y);
+```
+
+#### 17. Find XOR of numbers without using xor operator
+```c++
+int xorWithoutXOR = (x | y) & (~x | ~y);
+```
+
+#### 18. Swap three variables
+```c++
+x = x ^ y ^ z;
+y = x ^ y ^ z;
+z = x ^ y ^ z;
+x = x ^ y ^ z;
+```
+
+#### 19. Toggle Kth bit of a number
+```c++
+x = x ^ (1 << (k - 1));
+```
+
+#### 20. Toggle all bits except Kth bit of a number
+```c++
+x = ~(x ^ (1 << (k - 1)));
+```
+
+#### 21. Set the rightmost unset bit
+```c++
+x = x | (x + 1);
+```
+
+#### 22. Toggle the last m bits
+```c++
+int result = x ^ ~(-1 << m);
+```
+
+#### 23. Maximum XOR-value of at-most k-elements from 1 to n
+```c++
+int max_XOR = (1 << (int)(log2(n) + 1)) - 1;
+```
+
+#### 24. Check if a number is divisible by 8 using bitwise operators
+```c++
+bool isDivisibleBy8 = (((n >> 3) << 3) == n);
+```
+
+#### 25. Toggle bits of a number except first and last bits
+```c++
+int size = sizeof(int) * 8 - __builtin_clz(n);
+int mask = (1 << (size - 1)) - 1;
+n ^= mask;
+n ^= 1;
+```
+
+#### 26. Toggle all even bits of a number
+```c++
+int temp = n;
+int i = 1;
+while (temp) {
+    n ^= 1 << (i * 2);
+    i++;
+    temp >>= 1;
+}
+```
+
+#### 27. Brian Kernighan’s Algorithm for counting set Bits
+```c++
+int countSetBits(int n) {
+    int count = 0;
+    while (n) {
+        n &= (n - 1);
+        count++;
+    }
+    return count;
+}
+```

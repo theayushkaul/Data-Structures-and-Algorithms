@@ -1,6 +1,8 @@
 #include<bits/stdc++.h>
 using namespace std;
-
+// celebrity: i is the celebrity index
+// M[0->n][i] = 1: Everyone knows celebrity
+// M[i][0 -> n] = 0: Celebrity knows no one
 class Solution 
 {
     public:

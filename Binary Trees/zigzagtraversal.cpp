@@ -51,7 +51,7 @@ vector <int> zigZagTraversal(node* root)
     	    int size = q.size();
     	    vector<int> ans(size);
     	    
-    	    //Level Process
+    	    //Level Process: Using Level Order Traversal Logic
     	    for(int i=0; i<size; i++) {
     	        
     	        node* frontNode = q.front();

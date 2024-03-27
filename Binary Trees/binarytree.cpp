@@ -134,6 +134,12 @@ void buildFromLevelOrder(node* &root) {
         }
     }
 }
+
+// Reverse Level Order Traversal
+void revLOT(){
+    
+}
+
 int main(){
 
     node* root=NULL;

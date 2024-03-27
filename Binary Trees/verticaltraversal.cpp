@@ -39,7 +39,7 @@ Node* buildTree(Node* root){
 vector<int> verticalOrder(Node *root)
     {
         // A map to store horizontal distance and another map of level to the vector of elements.
-        // map<hd,map<lvl,vector<int>>>
+        // map<hd,map<lvl,list of Nodes>>
 
         map< int , map< int,vector<int> > > nodes;
 
@@ -81,7 +81,7 @@ vector<int> verticalOrder(Node *root)
             // i: A row representing <hd,map>
             
             for(auto j : i.second){
-                // A map of int and a vector
+                // A map of level and a vector of Nodes corresponding to that level
                
                 for(auto k: j.second){
                     // k is representing the vector

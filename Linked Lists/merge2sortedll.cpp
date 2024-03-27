@@ -71,3 +71,16 @@ Node* sortTwoLists(Node* first, Node* second)
         return solve(second,first);
     }
 }
+
+Node* mergell(Node* first, Node* second) {
+        if (!first) return second;
+        if (!second) return first;
+        
+        if (first->data < second->data) {
+            first->next = mergell(first->next, second);
+            return first;
+        } else {
+            second->next = mergell(first, second->next);
+            return second;
+        }
+    }

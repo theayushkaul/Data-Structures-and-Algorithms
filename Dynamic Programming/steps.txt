@@ -1,0 +1,17 @@
+Solve for recurrsion
+Then solve using Memoization
+then using tabulation 
+then optimize for the space
+
+Steps For Memoization:
+a) Make a dp Array of size(n+1,-1): Understand what you are gonna store in a dp array: Most of the time it is the overlapping results that you need
+    There is always a connection between i and dp[i]
+b) pass and store the results in dp array
+c)if(dp[n] != -1){
+		return dp[n];
+	}
+    Add this code in the base cases to check if this result is already been calculated 
+
+Steps For Tabulation:
+for loop
+dp array

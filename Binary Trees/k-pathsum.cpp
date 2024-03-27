@@ -49,3 +49,31 @@ int sumK(Node *root,int k){
         
     return count;
 }
+
+// optimzed
+class Solution{
+    int countPaths(Node* root, int targetSum, int currentSum, unordered_map<int, int>& pathCount) {
+        if (!root)
+            return 0;
+
+        currentSum += root->data;
+        int totalPaths = pathCount[currentSum - targetSum];
+
+        if (currentSum == targetSum)
+            totalPaths++;
+
+        pathCount[currentSum]++;
+        totalPaths += countPaths(root->left, targetSum, currentSum, pathCount);
+        totalPaths += countPaths(root->right, targetSum, currentSum, pathCount);
+        pathCount[currentSum]--;
+
+        return totalPaths;
+    }
+
+  public:
+    int sumK(Node *root, int k) {
+        unordered_map<int, int> pathCount;
+        pathCount[0] = 0; // initializing with 0 to handle cases where targetSum == currentSum
+        return countPaths(root, k, 0, pathCount);
+    }
+};

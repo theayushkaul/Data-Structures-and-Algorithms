@@ -1,52 +1,60 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
-
-vector<int> topologicalSort(vector<vector<int>> &edges, int v, int e)  {
-    map<int,list<int>> adj;
-    // create adj list
-    for(int i=0;i<e;i++){
-        int u = edges[i][0];
-        int v = edges[i][1];
-        adj[u].push_back(v);
+// Kahn's Algorithm
+vector<int> topologicalSort(vector<vector<int>> &edges, int v, int e)
+{
+    // Adj map
+    unordered_map<int, list<int>> adj;
+    for (int i = 0; i < e; i++)
+    {
+        adj[edges[i][0]].push_back(edges[i][1]);
     }
 
-    // find all indegrees
+    // Indegree array
     vector<int> indegree(v);
-    for(auto i: adj){
-        for(auto j: i.second){
+    for (auto i : adj)
+    {
+        for (auto j : i.second)
+        {
             indegree[j]++;
         }
     }
 
-    // push the 0 indegree waale
     queue<int> q;
-    for(int i=0;i<v;i++){
-        if(indegree[i] == 0){
+    // Push 0 indegree in the queue
+    for (int i = 0; i < v; i++)
+    {
+        if (indegree[i] == 0)
+        {
             q.push(i);
         }
     }
 
-    // BFS
+    // bfs traversal
     vector<int> ans;
-    while(!q.empty()){
-        int front  = q.front();
+    while (!q.empty())
+    {
+        int frontNode = q.front();
         q.pop();
+        // Add the frontNode to the answer
+        ans.push_back(frontNode);
 
-        // store ans
-        ans.push_back(front);
-
-        // neighbour indegree updation
-        for(auto neighbour : adj[front]){
+        for (auto neighbour : adj[frontNode])
+        {
             indegree[neighbour]--;
-            if(indegree[neighbour] == 0){
-            q.push(neighbour);
+            // When the indegree is 0 only then push to the queue
+            if (indegree[neighbour] == 0)
+            {
+                q.push(neighbour);
             }
         }
     }
+
     return ans;
 }
 
-int main(){
+int main()
+{
 
     return 0;
 }

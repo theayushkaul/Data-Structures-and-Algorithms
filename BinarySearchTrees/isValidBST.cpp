@@ -22,27 +22,31 @@ class TreeNode
         }
 };
 
-bool isValidBST(TreeNode* root) {
-    if(root==NULL || root->left==NULL && root->right==NULL){
-        return 1;
+class Solution {
+public:
+    bool isValidBST(TreeNode* root) {
+        // Call the recursive helper function with initial range constraints
+        return isValidBSTHelper(root, LONG_MIN, LONG_MAX);
     }
-    if(root->left!=NULL && root->right!=NULL){
-        if(root->val<root->right->val && root->val > root->left->val){
-                return isValidBST(root->left) && isValidBST(root->right);
-            }            
+
+private:
+    bool isValidBSTHelper(TreeNode* root, long long mini, long long maxi) {
+        // Base case: If the node is NULL, it's a valid BST
+        if (root == nullptr) {
+            return true;
         }
-    else if(root->left==NULL && root->right!=NULL){
-        if(root->val<root->right->val){
-                return isValidBST(root->right);
-            } 
+
+        // Check if the current node's value is within the valid range
+        if (root->val <= mini || root->val >= maxi) {
+            return false;
+        }
+
+        // Recursively check the left and right subtrees
+        // Update the range constraints accordingly
+        return isValidBSTHelper(root->left, mini, root->val) &&
+               isValidBSTHelper(root->right, root->val, maxi);
     }
-    else if(root->left!=NULL && root->right==NULL){
-        if(root->val>root->left->val){
-                return isValidBST(root->left);
-            } 
-    }
-    return 0;
-}
+};
 
 int main(){
 

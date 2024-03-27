@@ -1,5 +1,13 @@
 {
     "files.associations": {
-        "iostream": "cpp"
+        "iostream": "cpp",
+        "vector": "cpp",
+        "initializer_list": "cpp",
+        "condition_variable": "cpp",
+        "chrono": "cpp",
+        "type_traits": "cpp",
+        "ratio": "cpp",
+        "array": "cpp",
+        "string": "cpp"
     }
 }

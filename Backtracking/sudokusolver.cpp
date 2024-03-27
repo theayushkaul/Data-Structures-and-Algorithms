@@ -50,16 +50,6 @@ void solveSudoku(vector<vector<int>>& sudoku)
     solve(sudoku);
 }
 
-
-
-
-
-
-
-
-
-
-
 int main(){
 
     return 0;

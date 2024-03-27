@@ -7,7 +7,7 @@ int main()
         cin>>n;
         // Make a Dp array
         vector<int> dp(n+1);
-        // Initializa with the known values
+        // Initialize with the known values
         dp[0] = 0;
         dp[1] = 1;
 

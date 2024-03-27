@@ -1,5 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
+// First: AdjList
+// Queue<int> q; (Much more like level order traversal in binary tree)
 
 void bfs(unordered_map<int,set<int>>& adjList,unordered_map<int,bool>& visited,vector<int>& ans,int node)
 {
@@ -34,6 +36,36 @@ vector<int> BFS(int vertex, vector<pair<int, int>> edges)
     for(int i=0 ; i < vertex;i++){
         if(!visited[i]){
             bfs(adjList,visited,ans,i);
+        }
+    }
+
+    return ans;
+}
+
+// Alternate: Where adjancy list is already provided
+vector<int> bfsTraversal(int n, vector<vector<int>> &adj){
+    map<int,bool> visited;
+    vector<int> ans;
+
+    queue<int> q;
+    q.push(0);
+
+    while(!q.empty()){
+
+        int top = q.front();
+        q.pop();
+
+        if(!visited[top]) {
+
+            visited[top] = true;
+            ans.push_back(top);
+            
+            for(int i = 0; i < adj[top].size(); i++){
+                if (!visited[adj[top][i]]) {
+                    q.push(adj[top][i]);
+                }
+            }
+            
         }
     }
 
