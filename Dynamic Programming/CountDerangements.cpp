@@ -33,11 +33,6 @@ long long int solveMem (int n, vector<long long int>& dp){
     return dp[n];
 }
 
-long long int countDerangements(int n) {
-    vector<long long int> dp(n+1,-1);
-    return solveMem(n, dp);
-}
-
 // Tabulation
 long long int solveTab(int n){
     vector<long long int> dp(n+1,0);
@@ -61,6 +56,11 @@ long long int solve(int n){
         prev2 = curr;
     }
     return prev2;
+}
+
+long long int countDerangements(int n) {
+    vector<long long int> dp(n+1,-1);
+    return solveMem(n, dp);
 }
 int main(){
 

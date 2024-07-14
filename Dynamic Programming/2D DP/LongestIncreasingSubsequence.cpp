@@ -3,8 +3,6 @@
 using namespace std;
 
 // } Driver Code Ends
-
-
 class Solution
 {
     int solveOptimal(int n, int a[]){
@@ -20,6 +18,8 @@ class Solution
                 ans.push_back(a[i]);
             }else{
                 // This is using Binary search
+                // This searches in the ans array for the correct index to put the element at.
+                // Lower Bound: Searches in the vector to bring smallest possible index where element is >=arr[i]; 
                 int index = lower_bound(ans.begin(), ans.end(), a[i])-ans.begin();
                 ans[index] = a[i];
             }

@@ -64,6 +64,7 @@ public:
     }
 
     // Pops top element from Mth Stack. Returns -1 if the stack is empty, otherwise returns the popped element.
+    // Reverse the push method
     int pop(int m)
     {
         //check underflow condition

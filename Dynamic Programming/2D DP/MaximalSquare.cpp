@@ -4,26 +4,20 @@ using namespace std;
 class Solution{
     // SolveTab: With Space Optimization => SC:O(1)
     int solveSO1(int n,int m, vector<vector<int>>& mat,int& maxi){
-        vector<int> curr(m+1,0); //Dp[i]: Curr row
-        vector<int> next(m+1,0); //Dp[i+1]: Next row
-        for(int i = n-1;i>=0;i--){
-            for(int j = m-1;j>=0;j--){
-               int right = curr[j+1];
-                int down = next[j];
-                int diagonal = next[j+1];
-        
-                if(mat[i][j] == 1){
-                    curr[j] = min(right,min(down,diagonal)) + 1;
-                    maxi = max(maxi,curr[j]);
-                }else{
-                    curr[j] = 0;
-                } 
+        int ans = 0;
+
+        // Start from bottom-right and go upwards to the left
+        for (int i = n - 1; i >= 0; i--) {
+            for (int j = m - 1; j >= 0; j--) {
+                // If the element is 1 and it's not in the last row or column
+                if (mat[i][j] == 1 && i < n - 1 && j < m - 1) {
+                    mat[i][j] = 1 + min({mat[i + 1][j], mat[i][j + 1], mat[i + 1][j + 1]});
+                }
+                // Update the answer with the maximum value found
+                ans = max(ans, mat[i][j]);
             }
-            // After every iteration the current vector will become the next next vector
-            next = curr;
         }
-        
-        return next[0];
+        return ans;
     }
     // SolveTab: With Space Optimization => SC:O(m)
     int solveSO2(int n,int m, vector<vector<int>>& mat,int& maxi){

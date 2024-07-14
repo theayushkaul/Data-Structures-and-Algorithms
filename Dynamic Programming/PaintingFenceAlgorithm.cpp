@@ -1,9 +1,12 @@
 #include <bits/stdc++.h> 
+using namespace std;
 #define MOD 1000000007
 // Link: https://www.codingninjas.com/studio/problems/ninja-and-the-fence_3210208?topList=love-babbar-dsa-sheet-problems&leftPanelTab=0&leftPanelTabValue=PROBLEM
 // This algorithm states that if there is only 1 fence and k colors: Then there are k different ways.
 // If 2 posts and k colors : Then k*(k-1) + k;
-// After these base cases: Solve(n) = (k-1)Solve(n-1) + (k-1)Solve(n-2)
+// After these base cases: Solve(n) = (k-1)solve(n-1) + (k-1)solve(n-2)
+// (k-1) * solve(n-2): Same last two fences 
+// (k-1) * solve(n-1): Diffrent last two fences
 
 int add(int a, int b){
     return (a%MOD + b%MOD)%MOD;
