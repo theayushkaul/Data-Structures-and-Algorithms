@@ -41,10 +41,10 @@ bool isCyclicDFS(int node,int parent,unordered_map<int,bool>& visited,unordered_
             if(cycleDetected){
                 return true;
             }
-            else if(neighbour != parent){
+        }
+        else if(neighbour != parent){
                 return true;
             }
-        }
     }
 
     return false;
